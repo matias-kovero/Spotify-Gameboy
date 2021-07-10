@@ -1,0 +1,17 @@
+html {
+  height: 100%;
+  width: 100%;
+  background-color: #131313!important;
+}
+body {
+  margin: 0;
+  height: inherit;
+  width: inherit;
+}
+
+#svelte {
+  max-height: 100vh;
+  height: inherit;
+  overflow: hidden;
+  background-color:rgb(101 114 89);
+}
