@@ -22,20 +22,34 @@
 </style>
 
 <svelte:head>
+
+  <svg xmlns="http://www.w3.org/2000/svg">
+    <filter id="pixelate" x="0" y="0" >
+      <feFlood x="4" y="4" height="2" width="2"/>
+      <feComposite height="2" width="1"/>
+      <feTile result="a" />
+      <feComposite in="SourceGraphic" in2="a" operator="in" />
+      <feMorphology operator="erode" radius="1" />
+    </filter>
+  </svg>
+
   <svg xmlns="http://www.w3.org/2000/svg">
     <filter id="duotone_gameboy">
+
       <feColorMatrix type="matrix" result="grayscale"
         values="1 0 0 0 0
                 1 0 0 0 0
                 1 0 0 0 0
                 0 0 0 1 0" >
       </feColorMatrix>
+
       <feComponentTransfer color-interpolation-filters="sRGB" result="duotone">
         <feFuncR type="table" tableValues="0 0.7176470588"></feFuncR>
         <feFuncG type="table" tableValues="0 0.8039215686"></feFuncG>
         <feFuncB type="table" tableValues="0 0.631372549"></feFuncB>
         <feFuncA type="table" tableValues="0 1"></feFuncA>
-      </feComponentTransfer> 
+      </feComponentTransfer>
+
     </filter>        
   </svg>
   <svg xmlns="http://www.w3.org/2000/svg">
@@ -56,5 +70,4 @@
   </svg>
 
 </svelte:head>
-
 <!-- GB Green: 183, 205, 161 = 0.7176470588, 0.8039215686, 0.631372549  -->

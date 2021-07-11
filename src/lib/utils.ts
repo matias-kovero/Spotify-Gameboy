@@ -4,11 +4,11 @@ import { menuItems } from './config';
  * Automatically destroyed interval.
  */
 export function onInterval(callback: () => void, milliseconds: number) {
-	const interval = setInterval(callback, milliseconds);
-
-	onDestroy(() => {
-		clearInterval(interval);
-	});
+  const interval = setInterval(callback, milliseconds);
+  
+  onDestroy(() => {
+    clearInterval(interval);
+  });
 }
 
 /**

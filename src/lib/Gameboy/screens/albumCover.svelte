@@ -25,20 +25,21 @@
 </div>
 
 <style>
+  /* Image width somehow messes up with dynamic widths, hardoced 165px */
   .wrapper {
     display: grid;
     overflow: hidden;
     grid-column: 1/2;
 		grid-row: 1/2;
-    width: 100%;
-    height: 100%;
+    width: 165px;
+    height: 165px;
   }
   img {
     grid-column: 1/2;
 		grid-row: 1/2;
-    max-width: 100%;
-    max-height: 100%;
-    filter: url(#duotone_gameboy); /* Added in /views/player.index */
+    max-width: 165px; /* Fixed odd 1px line */
+    max-height: 165px;
+    filter: url(#pixelate) url(#duotone_gameboy); /* Added in /views/player.index */
     opacity: 1;
   }
 </style>

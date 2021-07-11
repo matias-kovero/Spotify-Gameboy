@@ -1,12 +1,65 @@
+@import '@fontsource/vt323';
+
+* {
+  /* coral pink */
+  --gb-screen-type1: #B7CDA1;
+  --gb-screen-background-type1: #000;
+  --gb-shell-type1: #DCD0FF;
+  --gb-buttons-type1: #000;
+
+  /* off-white */
+  --gb-screen-ofw: #B7CDA1;
+  --gb-screen-bg-ofw: #9392A0;
+  --gb-shell-ofw: #f4e7e3;
+  --gb-dpad-ofw: #47464B;
+  --gb-btn-ofw: #A94D80;
+  --gb-lowbtn-ofw: #B69B92;
+  --gb-text-ofw: #474b93;
+}
+
+:root {
+  /* set defaults */
+  --gb-screen: var(--gb-screen-type1);
+  --gb-screen-background: var(--gb-screen-background-type1);
+  --gb-shell: var(--gb-shell-type1);
+  --gb-buttons: var(--gb-buttons-type1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --gb-screen: var(--gb-screen-ofw);
+    --gb-screen-bg: var(--gb-screen-bg-ofw);
+    --gb-shell: var(--gb-shell-ofw);
+    --gb-dpad: var(--gb-dpad-ofw);
+    --gb-btn: var(--gb-btn-ofw);
+    --gb-lowbtn: var(--gb-lowbtn-ofw);
+    --gb-text: var(--gb-text-ofw);
+  }
+}
+
+/* All color schemes */
+[color-scheme="light"] {
+  color-scheme: light;
+
+  --gb-screen: var(--gb-screen-type1);
+  --gb-screen-background: var(--gb-screen-background-type1);
+  --gb-shell: var(--gb-shell-type1);
+  --gb-buttons: var(--gb-buttons-type1);
+}
+
 html {
   height: 100%;
   width: 100%;
   background-color: #131313!important;
 }
+
 body {
   margin: 0;
   height: inherit;
   width: inherit;
+  font-family: "VT323";
 }
 
 #svelte {
