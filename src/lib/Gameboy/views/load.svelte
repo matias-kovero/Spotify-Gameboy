@@ -1,7 +1,5 @@
 <script lang="ts">
-  import GameBoy from '../body.svelte';
+  import { updateScreen } from '../state';
+  
+  updateScreen({ string: 'Loading...'});
 </script>
-
-<GameBoy>
-  <div slot="screen">Loading...</div>
-</GameBoy>

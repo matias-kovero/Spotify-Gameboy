@@ -1,20 +1,20 @@
 <script lang="ts">
   import { menuItems } from '../../config';
-
-  export let menu_idx: number;
+	import { state } from '../state';
 </script>
 
 <div class="menu">
-  {#each menuItems as item, i}
-    <div class:selected={menu_idx === i} class="menu-item">{item}</div>
-  {/each}
+	{#each menuItems as item, i}
+		<div class:selected={$state.menu_index === i} class="menu-item">{item}</div>
+	{/each}
 </div>
 
 <style lang="scss">
   .menu {
-		display:flex;
+		display: flex;
 		flex-direction: column;
 		justify-content: center;
+		place-items: center;
 		width: 100%;
 		height: 100%;
 		font-size: 22px;

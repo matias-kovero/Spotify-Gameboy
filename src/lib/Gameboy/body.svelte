@@ -1,99 +1,75 @@
 <script lang="ts">
-  const btnPress = (btn: string) => {
-    console.log('Pressed', btn);
-  };
+  import { buttons, screen } from './state';
 </script>
 
-<div class="body">
-  <div class="screen">
-    <div class="inner">
-      <slot name="screen">Nintendo®</slot>
-    </div>
-  </div>
-  <div class="buttons">
-    <div class="upper-row">
-      <div class="dpad">
-        <div class="x">
-          <div class="left">
-            <slot name="left">
-              <div class="slot" on:click={() => btnPress('Left')} />
-            </slot>
+<div class="gameboy">
+  <div class="body">
+    <div class="screen">
+      <div class="inner">
+        {#if $screen.item}
+          <div class="wrapper">
+            <svelte:component this={$screen.item} />
           </div>
-          <div class="right">
-            <slot name="right">
-              <div class="slot" on:click={() => btnPress('Right')} />
-            </slot>
-          </div>
-        </div>
-        <div class="y">
-          <div class="up">
-            <slot name="up">
-              <div class="slot" on:click={() => btnPress('Up')} />
-            </slot>
-          </div>
-          <div class="down">
-            <slot name="down">
-              <div class="slot" on:click={() => btnPress('Down')} />
-            </slot>
-          </div>
-        </div>
-        <div class="y-shadow"></div>
-        <div class="x-shadow"></div>
-        <div class="shadow-middle"></div>
+        {:else }
+          {@html $screen.string}
+        {/if}
       </div>
-      <div class="ab">
-        <div class="button a">
-          <div class="label">A</div>
-          <slot name="a">
-            <div class="slot" on:click={() => btnPress('A')} />
-          </slot>
+    </div>
+    <div class="buttons">
+      <div class="upper-row">
+        <div class="dpad">
+          <div class="x">
+            <div class="left" on:click={$buttons.left}></div>
+            <div class="right" on:click={$buttons.right}></div>
+          </div>
+          <div class="y">
+            <div class="up" on:click={$buttons.up}></div>
+            <div class="down" on:click={$buttons.down}></div>
+          </div>
+          <div class="y-shadow"></div>
+          <div class="x-shadow"></div>
+          <div class="shadow-middle"></div>
         </div>
-        <div class="button b">
-          <div class="label">B</div>
-          <slot name="b">
-            <div class="slot" on:click={() => btnPress('B')} />
-          </slot>
+        <div class="ab">
+          <div class="button a" on:click={$buttons.a}>A</div>
+          <div class="button b" on:click={$buttons.b}>B</div>
+        </div>
+      </div>
+      <div class="bottom-row">
+        <div class="button" on:click={$buttons.select}>
+          <div class="label select">SELECT</div>
+        </div>
+        <div class="button" on:click={$buttons.start}>
+          <div class="label start">START</div>
         </div>
       </div>
     </div>
-    <div class="bottom-row">
-      <div class="button">
-        <div class="label select">SELECT</div>
-        <slot name="select">
-          <div class="slot" on:click={() => btnPress('Select')} />
-        </slot>
-      </div>
-      <div class="button">
-        <div class="label start">START</div>
-        <slot name="start">
-          <div class="slot" on:click={() => btnPress('Start')} />
-        </slot>
-      </div>
+    <div class="speaker"></div>
+    <div class="shadows">
+      <div class="top"></div>
+      <div class="hidden"></div>
+      <div class="bottom"></div>
     </div>
+    <div class="on-off"><small>OFF &#9900; &#9900; ON</small></div>
   </div>
-  <div class="speaker"></div>
-  <div class="shadows">
-    <div class="top"></div>
-    <div class="hidden"></div>
-    <div class="bottom"></div>
-  </div>
-  <div class="on-off"><small>OFF &#9900; &#9900; ON</small></div>
 </div>
 
 <style lang="scss">
   $dpad: 60px;
   $dpad-btn: 20px;
-
+  .gameboy {
+    height: 440px;
+  }
   .body {
     width: 250px;
     height: 400px;
+    margin-top: 200px;
     background: var(--gb-shell);
     border-radius: 8px 8px 50px 8px;
     display: grid;
     place-items: center;
     grid-template-rows: 60% 1fr;
     box-shadow: -5px 6px 13px 0 #0003, inset 2px -2px 6px #00000085, inset -2px 2px 2px 0px #ffffff4f;
-    margin-top: 200px;
     position: relative;
   }
   .screen {
@@ -120,6 +96,14 @@
       grid-column: 1/2;
       grid-row: 1/2;
       border: 1px solid #00000078;
+      > .wrapper {
+        display: grid;
+        overflow: hidden;
+        grid-column: 1/2;
+        grid-row: 1/2;
+        width: 165px;
+        height: 165px;
+      }
     }
     &::before {
       position: absolute;
@@ -365,11 +349,6 @@
     left: 8%;
     color: var(--gb-shell);
     text-shadow: 1px 0px 0px #ffffff47, -1px -1px 3px #00000014, -0.5px 0.5px 0px #00000052;
-  }
-  .slot {
-    width: 100%;
-    height: 100%;
-    z-index: 2;
   }
   .label {
     position: absolute;

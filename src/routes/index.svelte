@@ -3,7 +3,6 @@
   import SpotifyPlayer from 'svelte-spotify-web-playback/index.svelte';
   import { client_id } from '../../dev/config';
   import GameBoy from '$lib/Gameboy/index.svelte';
-  import TestBody from '$lib/Gameboy/body.svelte';
 
   let spotify;
 </script>
@@ -26,7 +25,6 @@
   main {
     display: grid;
     place-items: center;
-    grid-template-columns: auto;
   }
   div {
     display: none;
