@@ -9,7 +9,7 @@
 </script>
 
 <main>
-  <SpotifyPlayer {client_id} bind:this={spotify}>
+  <SpotifyPlayer {client_id} bind:this={spotify} name="Spotify Gameboy">
     <GameBoy 
       slot="all" let:player let:state let:error let:internal 
       {player} {state} {internal} {error} wrapper={spotify} 

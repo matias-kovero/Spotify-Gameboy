@@ -23,7 +23,7 @@
 
 <svelte:head>
 
-  <svg xmlns="http://www.w3.org/2000/svg">
+  <svg xmlns="http://www.w3.org/2000/svg" width="165px" height="165px">
     <filter id="pixelate" x="0" y="0" >
       <feFlood x="4" y="4" height="2" width="2"/>
       <feComposite height="2" width="1"/>
@@ -33,7 +33,7 @@
     </filter>
   </svg>
 
-  <svg xmlns="http://www.w3.org/2000/svg">
+  <svg xmlns="http://www.w3.org/2000/svg" width="165px" height="165px">
     <filter id="duotone_gameboy">
 
       <feColorMatrix type="matrix" result="grayscale"

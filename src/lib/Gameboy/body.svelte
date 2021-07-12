@@ -37,6 +37,9 @@
             </slot>
           </div>
         </div>
+        <div class="y-shadow"></div>
+        <div class="x-shadow"></div>
+        <div class="shadow-middle"></div>
       </div>
       <div class="ab">
         <div class="button a">
@@ -74,6 +77,7 @@
     <div class="hidden"></div>
     <div class="bottom"></div>
   </div>
+  <div class="on-off"><small>OFF &#9900; &#9900; ON</small></div>
 </div>
 
 <style lang="scss">
@@ -94,19 +98,19 @@
   }
   .screen {
     height: 85%;
-    width: 90%;
+    width: 88%;
     background: var(--gb-screen-bg);
     border-radius: 8px 8px 30px 8px;
     display: inherit;
     place-items: inherit;
-    border: 1px solid #00000030;
+    border: 1.5px solid #00000030;
     z-index: 1;
     > .inner {
       display: inherit;
       place-items: inherit;
       background: var(--gb-screen);
-      height: 165px;
-      width: 165px;
+      height: 163px; /* 165 - borders */
+      width: 164px;
       text-align: center;
       font-family: "VT323", monospace;
       font-size: 20px;
@@ -117,18 +121,30 @@
       grid-row: 1/2;
       border: 1px solid #00000078;
     }
-  }
-  .screen:after {
-    position: absolute;
-    content: '';
-    bottom: 0;
-    background-color: rgba(177,177,0, 0.25);
-    border-radius: 50%; 
-    box-shadow: rgba(0, 0, 0, 0.5) 5px 3px 10px;
-    clip: rect(20px, auto, 50px, 0);
-    top: -2px;
-    height: 20px;
-    width: 90%;
+    &::before {
+      position: absolute;
+      content: "";
+      bottom: 0;
+      background-color: rgba(177, 177, 0, 0.25);
+      border-radius: 50%;
+      box-shadow: rgb(0 0 0 / 19%) 0px -2px 7px;
+      clip: rect(-20px, auto, 0px, 0);
+      top: 56%;
+      height: 20px;
+      width: 68%;
+    }
+    &::after {
+      position: absolute;
+      content: '';
+      bottom: 0;
+      background-color: rgba(177,177,0, 0.25);
+      border-radius: 50%; 
+      box-shadow: rgba(0, 0, 0, 0.5) 5px 3px 10px;
+      clip: rect(20px, auto, 50px, 0);
+      top: -2px;
+      height: 20px;
+      width: 88%;
+    }
   }
   .buttons {
     display: inherit;
@@ -147,7 +163,8 @@
         height: $dpad;
         display: grid;
         place-items: center;
-        filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.3)) drop-shadow(-1px -1px 0px rgba(0, 0, 0, 0.3)) drop-shadow(1px -1px 0px rgba(0, 0, 0, 0.3)) drop-shadow(-1px 1px 0px rgba(0, 0, 0, 0.3));
+        z-index: 2;
+        /* filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.3)) drop-shadow(-1px -1px 0px rgba(0, 0, 0, 0.3)) drop-shadow(1px -1px 0px rgba(0, 0, 0, 0.3)) drop-shadow(-1px 1px 0px rgba(0, 0, 0, 0.3)); */
         > div {
           position: absolute;
           display: grid;
@@ -164,27 +181,35 @@
           width: 100%;
           height: $dpad-btn;
           grid-auto-flow: column;
-          > .right:before {
-            --size: 7px;
-            content: '';
-            width: 0;
-            height: 0;
-            position: absolute;
-            right: -2px;
-            top: calc(50% - var(--size));
-            border: var(--size) solid transparent;
-            border-left: calc(var(--size) + 4px) solid #00000030;
+          > .right {
+            box-shadow: inset -2px 2px 2px #ffffff17;
+            &::before {
+              --size: 7px;
+              content: '';
+              width: 0;
+              height: 0;
+              position: absolute;
+              right: -2px;
+              top: calc(50% - var(--size));
+              border: var(--size) solid transparent;
+              border-left: calc(var(--size) + 4px) solid #00000030;
+              filter: drop-shadow(-1.5px 1.5px 0px #ffffff3b);
+            }
           }
-          > .left:before {
-            --size: 7px;
-            content: '';
-            width: 0;
-            height: 0;
-            position: absolute;
-            left: -2px;
-            top: calc(50% - var(--size));
-            border: var(--size) solid transparent;
-            border-right: calc(var(--size) + 4px) solid #00000030;
+          > .left {
+            box-shadow: inset 0px 1px 0px #ffffff17;
+            &::before {
+              --size: 7px;
+              content: '';
+              width: 0;
+              height: 0;
+              position: absolute;
+              left: -2px;
+              top: calc(50% - var(--size));
+              border: var(--size) solid transparent;
+              border-right: calc(var(--size) + 4px) solid #00000030;
+              filter: drop-shadow(-1.5px 1.5px 0px #ffffff3b);
+            }
           }
         }
         > .y {
@@ -202,17 +227,40 @@
             border: var(--size) solid transparent;
             border-top: calc(var(--size) + 4px) solid #00000030;
           }
-          > .up:before {
-            --size: 7px;
-            content: '';
-            width: 0;
-            height: 0;
-            position: absolute;
-            top: -2px;
-            left: calc(50% - var(--size));
-            border: var(--size) solid transparent;
-            border-bottom: calc(var(--size) + 4px) solid #00000030;
+          > .up {
+            box-shadow: inset -1px 2px 3px #ffffff3b;
+            &::before {
+              --size: 7px;
+              content: '';
+              width: 0;
+              height: 0;
+              position: absolute;
+              top: -2px;
+              left: calc(50% - var(--size));
+              border: var(--size) solid transparent;
+              border-bottom: calc(var(--size) + 4px) solid #00000030;
+              filter: drop-shadow(-1.5px 1.5px 0px #ffffff3b);
+            }
           }
+        }
+        > .y-shadow {
+          width: $dpad-btn + 4px !important;
+          height: 107% !important;
+          z-index: -1;
+          background-color: #000000a6;
+        }
+        > .x-shadow {
+          height: $dpad-btn + 4px !important;
+          width: 107% !important;
+          z-index: -1;
+          background-color: #000000a6;
+        }
+        > .shadow-middle {
+          width: 15px;
+          height: 15px;
+          background: #00000017;
+          border-radius: 50%;
+          box-shadow: inset 1px -1px 2px #ffffff1f, inset -2px 2px 2px #0000002b;
         }
       }
       > .ab {
@@ -259,7 +307,7 @@
         border-radius: 10px;
         background: var(--gb-lowbtn);
         border: 1px solid #00000030;
-        box-shadow: inset 1px -1px 0px #00000024, inset -1px 1px 0px #ffffff24;
+        box-shadow: inset 0px -3px 3px #00000038, inset 0px 1px 4px #ffffff91, -1px 1px 1px #0000002b;
         .label {
           font-size: 11px;
           font-weight: 700;
@@ -299,7 +347,7 @@
     display: grid;
     grid-template-rows: 19px 51% 1fr;
     > div {
-      background: linear-gradient(90deg, rgba(0,0,0,0) 68%, rgba(0,0,0,0) 72.9%, rgba(255, 255, 255, 0.3) 73%, rgba(0,0,0,0) 73.3%, rgba(0,0,0,0.2) 100%);
+      background: linear-gradient(90deg, rgba(0,0,0,0) 68%, rgba(0,0,0,0) 72.9%, rgba(0, 0, 0, 0.02) 73%, rgba(0,0,0,0) 73.3%, rgba(0,0,0,0.2) 100%);
     }
     .top {
       border-radius: 0 8px 0 0;
@@ -310,6 +358,13 @@
     .bottom {
       border-radius: 0 0 50px 0;
     }
+  }
+  .on-off {
+    position:absolute;
+    top: -2px;
+    left: 8%;
+    color: var(--gb-shell);
+    text-shadow: 1px 0px 0px #ffffff47, -1px -1px 3px #00000014, -0.5px 0.5px 0px #00000052;
   }
   .slot {
     width: 100%;
