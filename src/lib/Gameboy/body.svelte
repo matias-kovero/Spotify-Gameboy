@@ -1,5 +1,32 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import { buttons, screen } from './state';
+  //import gameControl from 'gamecontroller.js';
+  let Controller;
+  /**
+   * Gamecontroller is only working on client, wrapping it's import inside onMount
+  */
+  onMount(async() => {
+    const module = await import('gamecontroller.js');
+    Controller = module.default;
+    
+    gameControl.on('connect', function(gamepad) {
+      setGamepad(gamepad);
+    });
+  });
+
+  const setGamepad = (gamepad: any) => {
+    if (!gamepad) return;
+    // .on = still pressed, .before = pressed, .after = released
+    gamepad.before('button0',  () => $buttons.b()      );
+    gamepad.before('button1',  () => $buttons.a()      );
+    gamepad.before('button8',  () => $buttons.start()  );
+    gamepad.before('button9',  () => $buttons.select() );
+    gamepad.before('button12', () => $buttons.up()     );
+    gamepad.before('button13', () => $buttons.down()   );
+    gamepad.before('button14', () => $buttons.left()   );
+    gamepad.before('button15', () => $buttons.right()  );
+  }
 </script>
 
 <div class="gameboy">
@@ -165,6 +192,7 @@
           width: 100%;
           height: $dpad-btn;
           grid-auto-flow: column;
+          cursor: pointer;
           > .right {
             box-shadow: inset -2px 2px 2px #ffffff17;
             &::before {
@@ -200,6 +228,7 @@
           width: $dpad-btn;
           height: 100%;
           grid-auto-flow: row;
+          cursor: pointer;
           > .down:before {
             --size: 7px;
             content: '';
@@ -261,15 +290,18 @@
           place-items: center;
           border: 1px solid #00000030;
           box-shadow: inset 1px -1px 0px #00000024, inset -1px 1px 0px #ffffff24;
+          cursor: pointer;
           &.b {
             position: absolute;
             bottom: 5px;
             left: 5px;
+            background: var(--gb-btn-b);
           }
           &.a {
             position: absolute;
             top: 5px;
             right: 5px;
+            background: var(--gb-btn-a);
           }
           .label {
             position: absolute;
@@ -290,12 +322,14 @@
         height: 8px;
         border-radius: 10px;
         background: var(--gb-lowbtn);
+        cursor: pointer;
         border: 1px solid #00000030;
         box-shadow: inset 0px -3px 3px #00000038, inset 0px 1px 4px #ffffff91, -1px 1px 1px #0000002b;
         .label {
           font-size: 11px;
           font-weight: 700;
           position: absolute;
+          cursor: default;
           bottom: -3px;
           padding: 0 1px;
           z-index: 0;

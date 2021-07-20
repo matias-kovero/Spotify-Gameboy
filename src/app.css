@@ -1,11 +1,15 @@
 @import '@fontsource/vt323';
 
 * {
-  /* coral pink */
-  --gb-screen-type1: #B7CDA1;
-  --gb-screen-background-type1: #000;
-  --gb-shell-type1: #DCD0FF;
-  --gb-buttons-type1: #000;
+  /* light-purple */
+  --gb-screen-lp: #B7CDA1;
+  --gb-screen-bg-lp: #000;
+  --gb-shell-lp: #DCD0FF;
+  --gb-dpad-lp: #44414d;
+  --gb-btn-a-lp: #44414d;
+  --gb-btn-b-lp: #44414d;
+  --gb-lowbtn-lp: #44414d;
+  --gb-text-lp: #00000077;
 
   /* off-white */
   --gb-screen-ofw: #B7CDA1;
@@ -13,16 +17,53 @@
   --gb-shell-ofw: #f4e7e3;
   --gb-dpad-ofw: #47464B;
   --gb-btn-ofw: #A94D80;
+  --gb-btn-a-ofw: #A94D80;
+  --gb-btn-b-ofw: #A94D80;
   --gb-lowbtn-ofw: #e2cbc3;
   --gb-text-ofw: #474b93;
+
+  /* pikachu */
+  --gb-screen-pika: #B7CDA1;
+  --gb-screen-bg-pika: #29292B;
+  --gb-shell-pika: #F9CB1D;
+  --gb-dpad-pika: #1121FA;
+  --gb-btn-pika: #A94D80;
+  --gb-btn-a-pika: #D60628;
+  --gb-btn-b-pika: #0C8C04;
+  --gb-lowbtn-pika: #0E0D1D;
+  --gb-text-pika: #0000003b;
+
+  /* lime */
+  --gb-screen-lime: #B7CDA1;
+  --gb-screen-bg-lime: #29292B;
+  --gb-shell-lime: #75AD1C;
+  --gb-dpad-lime: #1C1D17;
+  --gb-btn-a-lime: #1C1D17;
+  --gb-btn-b-lime: #1C1D17;
+  --gb-lowbtn-lime: #1C1D17;
+  --gb-text-lime: #4d4d4d80;
+
+  /* blue */
+  --gb-screen-blue: #B7CDA1;
+  --gb-screen-bg-blue: #29292B;
+  --gb-shell-blue: #004B6D;
+  --gb-dpad-blue: #29292B;
+  --gb-btn-a-blue: #29292B;
+  --gb-btn-b-blue: #29292B;
+  --gb-lowbtn-blue: #29292B;
+  --gb-text-blue: #00000069;
 }
 
 :root {
   /* set defaults */
-  --gb-screen: var(--gb-screen-type1);
-  --gb-screen-background: var(--gb-screen-background-type1);
-  --gb-shell: var(--gb-shell-type1);
-  --gb-buttons: var(--gb-buttons-type1);
+  --gb-screen: var(--gb-screen-ofw);
+  --gb-screen-bg: var(--gb-screen-bg-ofw);
+  --gb-shell: var(--gb-shell-ofw);
+  --gb-dpad: var(--gb-dpad-ofw);
+  --gb-btn-a: var(--gb-btn-a-ofw);
+  --gb-btn-b: var(--gb-btn-b-ofw);
+  --gb-lowbtn: var(--gb-lowbtn-ofw);
+  --gb-text: var(--gb-text-ofw);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -33,7 +74,8 @@
     --gb-screen-bg: var(--gb-screen-bg-ofw);
     --gb-shell: var(--gb-shell-ofw);
     --gb-dpad: var(--gb-dpad-ofw);
-    --gb-btn: var(--gb-btn-ofw);
+    --gb-btn-a: var(--gb-btn-a-ofw);
+    --gb-btn-b: var(--gb-btn-b-ofw);
     --gb-lowbtn: var(--gb-lowbtn-ofw);
     --gb-text: var(--gb-text-ofw);
   }
@@ -47,6 +89,63 @@
   --gb-screen-background: var(--gb-screen-background-type1);
   --gb-shell: var(--gb-shell-type1);
   --gb-buttons: var(--gb-buttons-type1);
+}
+[color-scheme="light-purple"] {
+  color-scheme: light;
+  --gb-screen: var(--gb-screen-lp);
+  --gb-screen-bg: var(--gb-screen-bg-lp);
+  --gb-shell: var(--gb-shell-lp);
+  --gb-dpad: var(--gb-dpad-lp);
+  --gb-btn-a: var(--gb-btn-a-lp);
+  --gb-btn-b: var(--gb-btn-b-lp);
+  --gb-lowbtn: var(--gb-lowbtn-lp);
+  --gb-text: var(--gb-text-lp);
+}
+[color-scheme="off-white"] {
+  color-scheme: light;
+  --gb-screen: var(--gb-screen-ofw);
+  --gb-screen-bg: var(--gb-screen-bg-ofw);
+  --gb-shell: var(--gb-shell-ofw);
+  --gb-dpad: var(--gb-dpad-ofw);
+  --gb-btn: var(--gb-btn-ofw);
+  --gb-btn-a: var(--gb-btn-a-ofw);
+  --gb-btn-b: var(--gb-btn-b-ofw);
+  --gb-lowbtn: var(--gb-lowbtn-ofw);
+  --gb-text: var(--gb-text-ofw);
+}
+[color-scheme="pikachu"] {
+  color-scheme: light;
+  --gb-screen: var(--gb-screen-pika);
+  --gb-screen-bg: var(--gb-screen-bg-pika);
+  --gb-shell: var(--gb-shell-pika);
+  --gb-dpad: var(--gb-dpad-pika);
+  --gb-btn: var(--gb-btn-pika);
+  --gb-btn-a: var(--gb-btn-a-pika);
+  --gb-btn-b: var(--gb-btn-b-pika);
+  --gb-lowbtn: var(--gb-lowbtn-pika);
+  --gb-text: var(--gb-text-pika);
+}
+[color-scheme="lime"] {
+  color-scheme: light;
+  --gb-screen: var(--gb-screen-lime);
+  --gb-screen-bg: var(--gb-screen-bg-lime);
+  --gb-shell: var(--gb-shell-lime);
+  --gb-dpad: var(--gb-dpad-lime);
+  --gb-btn-a: var(--gb-btn-a-lime);
+  --gb-btn-b: var(--gb-btn-b-lime);
+  --gb-lowbtn: var(--gb-lowbtn-lime);
+  --gb-text: var(--gb-text-lime);
+}
+[color-scheme="blue"] {
+  color-scheme: light;
+  --gb-screen: var(--gb-screen-blue);
+  --gb-screen-bg: var(--gb-screen-bg-blue);
+  --gb-shell: var(--gb-shell-blue);
+  --gb-dpad: var(--gb-dpad-blue);
+  --gb-btn-a: var(--gb-btn-a-blue);
+  --gb-btn-b: var(--gb-btn-b-blue);
+  --gb-lowbtn: var(--gb-lowbtn-blue);
+  --gb-text: var(--gb-text-blue);
 }
 
 html {

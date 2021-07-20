@@ -71,14 +71,16 @@ export const initProps = (_props: GameboyProps) => {
   });
 }
 
+
+
 interface GameboyState {
   show_menu?: boolean,
-  menu_index?: number,
+  active_item?: number,
 };
 
 const initialGbState = {
-  show_menu: false,
-  menu_index: 0,
+  show_menu: true,
+  active_item: 2, // Players id in config.
 } as GameboyState;
 
 export const state = writable(initialGbState);

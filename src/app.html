@@ -1,9 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" color-scheme="auto">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" href="/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script>
+			const doc = document.firstElementChild;
+			const ls = window.localStorage;
+			if (ls && ls.getItem('theme')) {
+				doc.setAttribute('color-scheme', ls.getItem('theme'));
+			}
+		</script>
 		%svelte.head%
 	</head>
 	<body>

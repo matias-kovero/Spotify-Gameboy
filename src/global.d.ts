@@ -6,4 +6,5 @@ import * as _ from 'svelte-spotify-web-playback/types';
 
 declare global {
   const _: typeof _;
+  const gameControl: any;
 }
