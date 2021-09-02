@@ -18,10 +18,10 @@
   const setGamepad = (gamepad: any) => {
     if (!gamepad) return;
     // .on = still pressed, .before = pressed, .after = released
-    gamepad.before('button0',  () => $buttons.b()      );
-    gamepad.before('button1',  () => $buttons.a()      );
-    gamepad.before('button8',  () => $buttons.start()  );
-    gamepad.before('button9',  () => $buttons.select() );
+    gamepad.before('button1',  () => $buttons.b()      );
+    gamepad.before('button0',  () => $buttons.a()      );
+    gamepad.before('button8',  () => $buttons.select() );
+    gamepad.before('button9',  () => $buttons.start()  );
     gamepad.before('button12', () => $buttons.up()     );
     gamepad.before('button13', () => $buttons.down()   );
     gamepad.before('button14', () => $buttons.left()   );

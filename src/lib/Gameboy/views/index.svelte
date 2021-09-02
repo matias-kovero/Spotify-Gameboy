@@ -79,7 +79,7 @@
 			local_parent = menu.find((i) => i.childs?.includes(item.id))?.id || 0; 	// Parent of selected item
 			idx = 0;
 		} else {
-			console.error('[Error] No component nor menu items found on menu item. Please check config on item id:', item.id);
+			console.error('[Error] No component nor menu items found. Please check config on item id:', item.id, 'Item should have childs or component');
 		}
 	}
 

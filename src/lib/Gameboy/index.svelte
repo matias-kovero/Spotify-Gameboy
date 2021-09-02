@@ -25,6 +25,14 @@
   $: { 
     initProps({ error });
   };
+  $: { 
+    initProps({ token: internal.accessToken });
+  };
+/*   $: {
+    initProps({
+      player, state, wrapper, error, token: internal.accessToken,
+    });
+  } */
 
   
   let screen = { } as { component: any };

@@ -58,7 +58,8 @@ interface GameboyProps {
   player?: WebPlaybackPlayer,
   state?: WebPlaybackState,
   wrapper?: any, // Can't be arsed to interface this. Methods are found in docs.
-  error?: { type: string, message: string }
+  error?: { type: string, message: string },
+  token?: string,
 };
 
 // Literally no screen should have access to this store when it is at initial value == {}

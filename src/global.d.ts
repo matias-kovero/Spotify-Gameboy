@@ -1,6 +1,6 @@
 /// <reference types="@sveltejs/kit" />
-/// <reference types="svelte-spotify-web-playback/types" />
-import * as _ from 'svelte-spotify-web-playback/types';
+/* /// <reference types="svelte-spotify-web-playback/types" /> */
+// import * as _ from 'svelte-spotify-web-playback/types';
 
 // No idea how this works...
 

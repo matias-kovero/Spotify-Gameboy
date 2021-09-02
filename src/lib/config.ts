@@ -37,7 +37,7 @@ export const menu_old = {
  */
 export const menu = [
   { id:   0, label: 'Main menu',    childs: [1, 2, 3] },
-  { id:   1, label: 'playlists',    component: '' },
+  { id:   1, label: 'playlists',    component: 'playlists' },
   { id:   2, label: 'now playing',  component: 'player' },
   { id:   3, label: 'settings',     childs: [30, 31, 32] },
   { id:  30, label: 'themes',       component: 'themes' },
