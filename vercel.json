@@ -1,0 +1,7 @@
+{
+  "name": "pocket-spotify",
+  "regions": ["bru"],
+  "github": {
+    "silent": true
+  }
+}

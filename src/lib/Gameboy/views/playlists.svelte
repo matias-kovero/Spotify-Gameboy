@@ -10,7 +10,6 @@
 
   api.getUserPlaylists()
     .then(data => {
-      console.log('Playlists:', data);
       data.items.forEach(p => {
         userLists.push({ id: p.id, name: p.name, uri: p.uri });
       });
@@ -19,7 +18,6 @@
     });
   api.getFeaturedPlaylists()
     .then(data => {
-      console.log('Featured:', data);
       data.playlists.items.forEach(p => {
         userLists.push({ id: p.id, name: p.name, uri: p.uri });
       });
@@ -90,10 +88,6 @@
     {#if idx == 0}
       <div class="menu-item">{'▼'}</div>
     {/if}
-
-    <!-- {#each userLists as item, i}
-      <div class:selected={idx === i} class="menu-item">{item?.name}</div>
-    {/each} -->
   {/key}
 </div>
 
