@@ -1,11 +1,11 @@
 <script lang="ts">
   import '../app.css';
   import { WebPlayback } from 'svelte-spotify-web-playback';
-  import { client_id } from '../../dev/config';
+  //import { client_id } from '../../dev/config';
   import GameBoy from '$lib/Gameboy/index.svelte';
 
   let spotify;
-  let id = client_id || process.env.SPOTIFY_ID;
+  let id = process.env.SPOTIFY_ID; //client_id || process.env.SPOTIFY_ID;
 </script>
 
 <main>
